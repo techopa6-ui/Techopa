@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "techopa";
+$servername = "sql12.freesqldatabase.com:3306";
+$username = "sql12805514";
+$password = "kdCtrEXSua";
+$dbname = "sql12805514";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 
@@ -149,4 +149,5 @@ die("Connection failed: " . $conn->connect_error);
   </div>
 </footer>
 </body>
+
 </html>
