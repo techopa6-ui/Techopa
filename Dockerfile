@@ -1,19 +1,17 @@
 FROM php:8.2-apache
 
-# Install mysqli and other useful PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli pdo_mysql
-
 # Enable Apache Rewrite Module
 RUN a2enmod rewrite
 
-# Set working directory
+# Change Apache to listen on the port Render provides
+RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
+
 WORKDIR /var/www/html
 
 # Copy project files
 COPY . .
 
-# Expose port
-EXPOSE 80
+EXPOSE 8080
 
 # Start Apache
 CMD ["apache2-foreground"]
